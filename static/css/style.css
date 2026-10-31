@@ -169,8 +169,8 @@ a:hover { color: var(--secondary); }
 }
 
 .navbar .container {
-    background: transparent;
-    box-shadow: none;
+    background: transparent !important;
+    box-shadow: none !important;
 }
 
 .navbar-brand { 
