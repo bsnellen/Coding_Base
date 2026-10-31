@@ -163,17 +163,29 @@ a:hover { color: var(--secondary); }
 /* Navbar */
 .navbar {
     background: var(--primary);
-    color: white;
     padding: 6px 8px;
     margin-bottom: 8px;
     border-radius: 3px;
 }
 
-.navbar-brand { font-size: 16px; font-weight: 600; color: white; }
+.navbar-brand { 
+    font-size: 16px; 
+    font-weight: 600; 
+    color: white !important;
+}
 .navbar-nav { display: flex; list-style: none; }
 .navbar-nav li { margin-left: 8px; }
-.navbar-nav a { color: white; padding: 4px 6px; font-size: 13px; }
-.navbar-nav a:hover { background: var(--secondary); border-radius: 3px; }
+.navbar-nav a { 
+    color: white !important; 
+    padding: 4px 6px; 
+    font-size: 13px;
+    text-decoration: none;
+}
+.navbar-nav a:hover { 
+    background: var(--secondary); 
+    border-radius: 3px;
+    color: white !important;
+}
 
 /* Footer */
 .footer {
