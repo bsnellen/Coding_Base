@@ -168,6 +168,11 @@ a:hover { color: var(--secondary); }
     border-radius: 3px;
 }
 
+.navbar .container {
+    background: transparent;
+    box-shadow: none;
+}
+
 .navbar-brand { 
     font-size: 16px; 
     font-weight: 600; 
