@@ -7,7 +7,180 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 <body>
-    <h1>Welcome to the Flask App</h1>
-    <p>This is the base template.</p>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="container">
+            <span class="navbar-brand">Flask Base</span>
+            <ul class="navbar-nav">
+                <li><a href="#">Home</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Services</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+        <h1>Welcome to the Flask App</h1>
+        
+        <!-- Alerts Section -->
+        <div class="alert alert-success">
+            This is a success alert message.
+        </div>
+        <div class="alert alert-info">
+            This is an info alert message.
+        </div>
+        <div class="alert alert-warning">
+            This is a warning alert message.
+        </div>
+        <div class="alert alert-danger">
+            This is a danger alert message.
+        </div>
+
+        <!-- Buttons Section -->
+        <div class="card mt-4">
+            <div class="card-header">Buttons</div>
+            <div class="card-body">
+                <button class="btn btn-primary">Primary Button</button>
+                <button class="btn btn-secondary">Secondary Button</button>
+                <button class="btn btn-success">Success Button</button>
+                <button class="btn btn-danger">Danger Button</button>
+                <br>
+                <button class="btn btn-primary btn-sm mt-2">Small Primary</button>
+                <button class="btn btn-secondary btn-sm mt-2">Small Secondary</button>
+                <button class="btn btn-success btn-lg mt-2">Large Success</button>
+            </div>
+        </div>
+
+        <!-- Table Section -->
+        <div class="card mt-4">
+            <div class="card-header">Sample Table</div>
+            <div class="card-body">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>John Doe</td>
+                            <td>john@example.com</td>
+                            <td><span class="alert alert-success" style="padding: 5px; margin: 0;">Active</span></td>
+                            <td>
+                                <button class="btn btn-primary btn-sm">View</button>
+                                <button class="btn btn-danger btn-sm">Delete</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>Jane Smith</td>
+                            <td>jane@example.com</td>
+                            <td><span class="alert alert-warning" style="padding: 5px; margin: 0;">Pending</span></td>
+                            <td>
+                                <button class="btn btn-primary btn-sm">View</button>
+                                <button class="btn btn-danger btn-sm">Delete</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>Bob Johnson</td>
+                            <td>bob@example.com</td>
+                            <td><span class="alert alert-danger" style="padding: 5px; margin: 0;">Inactive</span></td>
+                            <td>
+                                <button class="btn btn-primary btn-sm">View</button>
+                                <button class="btn btn-danger btn-sm">Delete</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Form Section -->
+        <div class="card mt-4">
+            <div class="card-header">Sample Form</div>
+            <div class="card-body">
+                <form>
+                    <div class="row">
+                        <div class="col col-6">
+                            <div class="form-group">
+                                <label for="firstName">First Name</label>
+                                <input type="text" id="firstName" class="form-control" placeholder="Enter first name">
+                            </div>
+                        </div>
+                        <div class="col col-6">
+                            <div class="form-group">
+                                <label for="lastName">Last Name</label>
+                                <input type="text" id="lastName" class="form-control" placeholder="Enter last name">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" class="form-control" placeholder="Enter email">
+                    </div>
+                    <div class="form-group">
+                        <label for="subject">Subject</label>
+                        <select id="subject" class="form-control">
+                            <option value="">Select a subject</option>
+                            <option value="general">General Inquiry</option>
+                            <option value="support">Support</option>
+                            <option value="feedback">Feedback</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" class="form-control" placeholder="Enter your message"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                        <button type="reset" class="btn btn-secondary">Reset</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- Grid System Demo -->
+        <div class="card mt-4">
+            <div class="card-header">Grid System Demo</div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col col-3">
+                        <div style="background-color: #3498db; color: white; padding: 20px; text-align: center; border-radius: 4px;">
+                            Column 1 (25%)
+                        </div>
+                    </div>
+                    <div class="col col-3">
+                        <div style="background-color: #2ecc71; color: white; padding: 20px; text-align: center; border-radius: 4px;">
+                            Column 2 (25%)
+                        </div>
+                    </div>
+                    <div class="col col-3">
+                        <div style="background-color: #e74c3c; color: white; padding: 20px; text-align: center; border-radius: 4px;">
+                            Column 3 (25%)
+                        </div>
+                    </div>
+                    <div class="col col-3">
+                        <div style="background-color: #9b59b6; color: white; padding: 20px; text-align: center; border-radius: 4px;">
+                            Column 4 (25%)
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer mt-4">
+        <div class="container">
+            <p>&copy; 2024 Flask Base. All rights reserved.</p>
+        </div>
+    </footer>
 </body>
 </html>
