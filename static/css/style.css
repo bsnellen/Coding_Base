@@ -37,6 +37,10 @@ p { margin-bottom: 8px; }
 a { color: var(--accent); text-decoration: none; }
 a:hover { color: var(--secondary); }
 
+/* Navbar links override */
+.navbar a { color: white; }
+.navbar a:hover { color: white; background: var(--secondary); }
+
 /* Container */
 .container {
     max-width: 1200px;
