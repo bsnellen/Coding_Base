@@ -165,7 +165,7 @@ a:hover { color: var(--secondary); }
     border-radius: 3px;
 }
 
-.navbar-brand { font-size: 16px; font-weight: 600; }
+.navbar-brand { font-size: 16px; font-weight: 600; color: white; }
 .navbar-nav { display: flex; list-style: none; }
 .navbar-nav li { margin-left: 8px; }
 .navbar-nav a { color: white; padding: 4px 6px; font-size: 13px; }
