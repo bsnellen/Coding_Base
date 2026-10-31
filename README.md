@@ -125,27 +125,108 @@ def about():
 
 ## Adding Business Logic
 
-Place complex functions and services in the `services/` folder:
+**Important**: When starting a new project, organize your business logic into **discreet, focused files** in the `services/` folder. Each file should handle a specific domain or feature.
 
-```python
-# services/user_service.py
-from typing import List, Dict
+### Service Organization Guidelines
 
-def get_users() -> List[Dict]:
-    """Example service function to get users."""
-    return [{"id": 1, "name": "John Doe"}, {"id": 2, "name": "Jane Smith"}]
+1. **One domain per file**: Create separate files for different business concerns
+2. **Keep files small**: Each service file should be focused and manageable
+3. **Name clearly**: Use descriptive names like `user_service.py`, `auth_service.py`, `data_processor.py`
+
+### Example Structure
+```
+services/
+├── __init__.py
+├── auth_service.py      # Authentication logic
+├── user_service.py      # User-related operations
+├── data_service.py      # Data processing functions
+└── email_service.py     # Email sending functionality
 ```
 
-Then import and use in your routes:
+### Creating a Service File
+```python
+# services/user_service.py
+from typing import List, Dict, Optional
+
+class UserService:
+    """All user-related business logic."""
+    
+    @staticmethod
+    def get_users() -> List[Dict]:
+        """Get all users."""
+        return [{"id": 1, "name": "John Doe"}, {"id": 2, "name": "Jane Smith"}]
+    
+    @staticmethod
+    def get_user(user_id: int) -> Optional[Dict]:
+        """Get a specific user by ID."""
+        users = UserService.get_users()
+        return next((u for u in users if u["id"] == user_id), None)
+
+# Create an instance for easy importing
+user_service = UserService()
+```
+
+### Using Services in Routes
 ```python
 # run.py
-from services.user_service import get_users
+from services.user_service import user_service
 
 @app.route('/users')
 def users():
-    users = get_users()
+    users = user_service.get_users()
     return render_template('users.html', users=users)
+
+@app.route('/users/<int:user_id>')
+def user_detail(user_id):
+    user = user_service.get_user(user_id)
+    if user is None:
+        return "User not found", 404
+    return render_template('user_detail.html', user=user)
 ```
+
+### Service with External Dependencies
+```python
+# services/email_service.py
+import smtplib
+from email.mime.text import MIMEText
+from typing import Optional
+
+class EmailService:
+    """Email sending functionality."""
+    
+    def __init__(self, smtp_server: str, smtp_port: int, username: str, password: str):
+        self.smtp_server = smtp_server
+        self.smtp_port = smtp_port
+        self.username = username
+        self.password = password
+    
+    def send_email(self, to: str, subject: str, body: str) -> bool:
+        """Send an email."""
+        try:
+            msg = MIMEText(body)
+            msg['Subject'] = subject
+            msg['From'] = self.username
+            msg['To'] = to
+            
+            with smtplib.SMTP(self.smtp_server, self.smtp_port) as server:
+                server.starttls()
+                server.login(self.username, self.password)
+                server.send_message(msg)
+            return True
+        except Exception as e:
+            print(f"Error sending email: {e}")
+            return False
+
+# Initialize with your SMTP settings (or use environment variables)
+email_service = EmailService(
+    smtp_server="smtp.example.com",
+    smtp_port=587,
+    username="your@email.com",
+    password="your-password"
+)
+```
+
+**Best Practice**: Initialize services with configuration in `run.py` or use environment variables for sensitive data.
 
 ---
 
